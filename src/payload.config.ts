@@ -13,7 +13,6 @@ import { Comment } from './collections/Comment'
 import { Topic } from './collections/Topic'
 import { Author } from './collections/Author'
 import { Collections } from './collections/Collections'
-import { Access } from './collections/Access'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,6 +25,14 @@ export default buildConfig({
     },
   },
   collections: [Users,Role,Article,Comment,Author,Topic,Collections],
+  cors:[
+    "http://localhost:3000/",
+    "https://localhost:3000/"
+  ],
+  csrf:[
+    "https://localhost:3000/",
+    "http://localhost:3000/",
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

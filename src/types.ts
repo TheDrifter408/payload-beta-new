@@ -1,0 +1,3 @@
+type FormErrors = {
+    message:string
+}
