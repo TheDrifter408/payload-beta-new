@@ -13,6 +13,9 @@ import { Comment } from './collections/Comment'
 import { Topic } from './collections/Topic'
 import { Author } from './collections/Author'
 import { Collections } from './collections/Collections'
+import { Page } from './collections/Page'
+import { redirectsPlugin } from '@payloadcms/plugin-redirects'
+import { revalidateRedirects } from './hooks/revalidateRedirects'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +27,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users,Role,Article,Comment,Author,Topic,Collections],
+  collections: [Users,Role,Article,Comment,Author,Topic,Collections, Page],
   cors:[
     "http://localhost:3000/",
     "https://localhost:3000/"
@@ -46,5 +49,6 @@ export default buildConfig({
   sharp,
   plugins: [
     // storage-adapter-placeholder
+    
   ],
 })

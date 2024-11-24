@@ -1,7 +1,9 @@
+import configPromise from '@payload-config';
+
 import Link from "next/link";
-import { payload } from '@/payloadAPI';
 import { PaginatedDocs } from "payload";
 import { Access, User } from "@/payload-types";
+import { getPayloadHMR } from '@payloadcms/next/utilities';
 
 function TestComponent({id,name,role }:User){
     return(
@@ -39,11 +41,12 @@ function TestComponent({id,name,role }:User){
 }
 
 export default async function Home(){
-    
+    const payload = await getPayloadHMR({ config:configPromise })
     const result:PaginatedDocs<User> = await payload.find({
         collection:'users',
         depth:2
     })
+    console.dir(result.docs[0],{ depth: null });
     return(
         <section>
             <div>
